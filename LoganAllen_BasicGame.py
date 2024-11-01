@@ -6,8 +6,14 @@ class beardMan(simpleGE.Sprite):
         super().__init__(scene)
         self.setImage("beardMan.png")
         self.setSize(50,50)
-        
-              
+        self.position = (320,400)
+        self.moveSpeed = 5
+    
+    def process(self):
+        if self.isKeyPressed(pygame.K_LEFT):
+            self.x -= self.moveSpeed
+        if self.isKeyPressed(pygame.K_RIGHT):
+            self.x += self.moveSpeed
 #class Coin(simpleGE.Sprite):
               
 class Game(simpleGE.Scene):
