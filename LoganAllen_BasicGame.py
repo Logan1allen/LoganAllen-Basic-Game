@@ -6,6 +6,7 @@ class beardMan(simpleGE.Sprite):
         super().__init__(scene)
         self.setImage("beardMan.png")
         self.setSize(50,50)
+        
               
 #class Coin(simpleGE.Sprite):
               
@@ -14,6 +15,7 @@ class Game(simpleGE.Scene):
         super().__init__()
         self.setImage("frogBaby.png")
         self.beardMan = beardMan(self)
+        self.sprites = [self.beardMan]
         
         
 def main():
