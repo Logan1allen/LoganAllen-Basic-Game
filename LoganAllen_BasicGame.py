@@ -14,7 +14,7 @@ class beardMan(simpleGE.Sprite):
             self.x -= self.moveSpeed
         if self.isKeyPressed(pygame.K_RIGHT):
             self.x += self.moveSpeed
-class Coin(simpleGE.Sprite):
+class strawberry(simpleGE.Sprite):
     def __init__(self, scene):
         super().__init__(scene)
         self.setImage("strawberry.png")
@@ -36,10 +36,23 @@ class Game(simpleGE.Scene):
     def __init__(self):
         super().__init__()
         self.setImage("frogBaby.png")
+        self.sndstrawberry = simpleGE.Sound("coinsound.MP3")
+        self.numstrawberrys = 10
         self.beardMan = beardMan(self)
-        self.strawberry = Coin(self)
+        self.strawberrys = []
+        for i in range(self.numstrawberrys):
+            self.strawberrys.append(strawberry(self))
+        
         self.sprites = [self.beardMan,
-                        self.strawberry]
+                        self.strawberrys]
+        
+    def process(self):
+        for strawberry in self.strawberrys:
+            
+            if strawberry.collidesWith(self.beardMan):
+                strawberry.reset()
+                self.sndstrawberry.play()
+            
         
         
 def main():
